@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#dcecf4" />
+    <title>Ecrin'e Bir Yol</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="game.js" defer></script>
+  </head>
+  <body>
+    <main class="game-shell">
+      <header class="topline">
+        <a class="wordmark" href="." aria-label="Ecrin'e Bir Yol, oyunu yeniden başlat">
+          <span class="wordmark-mark" aria-hidden="true">✿</span>
+          <span>küçük şeyler</span>
+        </a>
+        <span class="chapter-note">sana minicik bir macera</span>
+      </header>
+
+      <section class="game-layout" aria-labelledby="game-title">
+        <div class="intro">
+          <p class="eyebrow">Senin için, Ecrin</p>
+          <h1 id="game-title">Ecrin'e <em>Bir Yol</em></h1>
+          <p class="lede">Kır çiçeklerini topla, sonra küçük eve giden yolu bul.</p>
+          <div class="landscape" aria-hidden="true">
+            <svg viewBox="0 0 360 128" role="img">
+              <path class="hill-back" d="M0 79c47-29 86-25 128-7 39 17 74 9 112-14 40-24 77-20 120 4v66H0z" />
+              <path class="hill-front" d="M0 96c49-21 92-17 132-2 48 18 83 11 123-8 39-19 71-15 105-2v44H0z" />
+              <path class="path-ribbon" d="M173 128c14-19 8-33-4-48-9-12-5-21 7-29" />
+              <g class="tiny-house" transform="translate(221 27)">
+                <path d="M3 19 25 1l22 18v30H3z" />
+                <path d="M-1 20 25-2l27 22" />
+                <path d="M20 49V31h11v18" />
+                <rect x="8" y="23" width="8" height="8" rx="1" />
+                <rect x="34" y="23" width="8" height="8" rx="1" />
+              </g>
+              <g class="landscape-flower" transform="translate(93 83)">
+                <path d="M0 0v22m0-11-8-5m8 10 8-6" />
+                <circle cx="0" cy="-4" r="3" /><circle cx="-4" cy="-1" r="3" /><circle cx="4" cy="-1" r="3" /><circle cx="0" cy="3" r="3" />
+              </g>
+              <g class="landscape-flower second" transform="translate(285 94)">
+                <path d="M0 0v17m0-8-6-4m6 8 6-5" />
+                <circle cx="0" cy="-4" r="2.5" /><circle cx="-4" cy="-1" r="2.5" /><circle cx="4" cy="-1" r="2.5" /><circle cx="0" cy="3" r="2.5" />
+              </g>
+              <circle class="sun" cx="60" cy="29" r="13" />
+              <path class="sun-ray" d="M60 7v-5m0 54v-5M38 29h-5m59 0h-5M44 13l-4-4m41 41-4-4m0-33 4-4m-41 41 4-4" />
+            </svg>
+          </div>
+        </div>
+
+        <div class="play-area">
+          <div class="level-row">
+            <div class="level-tabs" role="tablist" aria-label="Bölümler">
+              <button class="level-tab" type="button" role="tab" data-level="0" aria-selected="true">01 <span>İlk ışık</span></button>
+              <button class="level-tab" type="button" role="tab" data-level="1" aria-selected="false" disabled>02 <span>Bahçe yolu</span></button>
+              <button class="level-tab" type="button" role="tab" data-level="2" aria-selected="false" disabled>03 <span>Eve dönüş</span></button>
+            </div>
+          </div>
+
+          <div class="board-heading">
+            <span id="level-name">İlk ışık</span>
+            <span class="bloom-count" aria-label="Toplanan çiçekler">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c-4-1-5-5-2-6 2-1 3 2 2 6Zm0 0c1-4 5-5 6-2 1 2-2 3-6 2Zm0 0c4 1 5 5 2 6-2 1-3-2-2-6Zm0 0c-1 4-5 5-6 2-1-2 2-3 6-2Z"/><circle cx="12" cy="12" r="2"/></svg>
+              <span id="bloom-count">0 / 1</span>
+            </span>
+          </div>
+
+          <div class="board-wrap">
+            <div id="board" class="board" role="grid" aria-label="Bahçe yolu bulmacası"></div>
+          </div>
+
+          <div class="game-footer">
+            <p id="status" class="status" aria-live="polite">Yolu takip et, bütün çiçekleri topla.</p>
+            <button id="restart" class="restart" type="button" aria-label="Bölümü baştan başlat" title="Baştan başla">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11a8 8 0 1 1 2 6"/><path d="M4 5v6h6"/></svg>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="extras" aria-labelledby="extras-title">
+        <div class="extras-header">
+          <p class="eyebrow">küçük detaylar</p>
+          <h2 id="extras-title">Bu yolculuğa biraz daha renk</h2>
+        </div>
+
+        <div class="mini-panels" aria-label="Site notları">
+          <article class="mini-panel coral">
+            <span class="panel-icon" aria-hidden="true">✦</span>
+            <h3>Gülüşler</h3>
+            <p>Her küçük mutluluk, bir durak gibi yolun bir tarafına yaklaşıyor.</p>
+          </article>
+          <article class="mini-panel mint">
+            <span class="panel-icon" aria-hidden="true">☼</span>
+            <h3>Gün ışığı</h3>
+            <p>İçinde en sevdiğin şeyleri büyütmek için küçük bir bahçe aç.</p>
+          </article>
+          <article class="mini-panel gold">
+            <span class="panel-icon" aria-hidden="true">♥</span>
+            <h3>Yol arkadaşları</h3>
+            <p>En güzel yerler, senin yanında daha da ışıltılı hale geliyor.</p>
+          </article>
+        </div>
+
+        <div class="mood-box" aria-live="polite">
+          <div class="mood-head">
+            <h3>Bugünün hissi</h3>
+            <button id="mood-button" type="button">Bir renk seç</button>
+          </div>
+          <div class="mood-pills" role="list" aria-label="Hissedilen ruh halleri">
+            <button class="mood-pill is-active" type="button" data-mood="güneşli">Güneşli</button>
+            <button class="mood-pill" type="button" data-mood="sakin">Sakin</button>
+            <button class="mood-pill" type="button" data-mood="mutlu">Mutlu</button>
+            <button class="mood-pill" type="button" data-mood="maceralı">Maceralı</button>
+          </div>
+          <p id="mood-message">Bugün biraz güneşli, biraz da tatlı bir iyimserlik taşıyor.</p>
+        </div>
+      </section>
+
+      <footer class="closing-note">
+        <span class="footer-flower" aria-hidden="true">✿</span>
+        <span>Her yolun en güzel yeri, senin yanın.</span>
+        <span class="footer-flower" aria-hidden="true">✿</span>
+      </footer>
+      <section id="ending" class="ending" aria-live="polite" hidden>
+        <span class="ending-flower" aria-hidden="true">✿</span>
+        <p>Ne tarafa gidersek gidelim...</p>
+        <h2>En mutlu yerim <em>senin yanın.</em></h2>
+        <button id="play-again" type="button">Yeniden dolaş <span aria-hidden="true">↗</span></button>
+      </section>
+    </main>
+  </body>
+</html>
